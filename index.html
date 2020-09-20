@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>JavaScript Multiple Choice Quiz</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="banner">
+            <div class="row">
+                <button id="view-scores"> View Highscores</button>
+                <div>Time: <span id="timer"></span> </div>
+            </div>
+        </div>
+
+        <div class="dynamic-content">
+            <div></div>
+        </div>
+
+        <div class="start-quiz row">
+            <h2>Coding Quiz</h2>
+            <button id="start-quiz">Start!</button>
+        </div>
+
+        <div class="quiz-body row">
+            IM A QUIZ
+        </div>
+
+        <div class="highscores">
+            <div class="highscore-title row">
+                <h3 class="col-md-8-center">Highscores</h3>
+            </div>
+            <div class="scores-list row">
+                <ol>
+                    <li>1. test me i am a score</li>
+                    <!--dynamic scores will go here!-->
+                </ol>
+            </div>
+            <div class="buttons row">
+                <div class="col-lg-3">
+                    <button>Clear Highscores</button>
+                </div>
+                <div class="col-lg-3">
+                    <button id="back-button">Go Back</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="logic.js" src="questions.js"></script>
+</body>
+
+</html>
