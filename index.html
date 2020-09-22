@@ -32,20 +32,24 @@
             <div id="choices">
             </div>
         </div>
+        <div class="enter-highscores">
+            <label for="initials">Initials:</label><br>
+            <input type="text" id="initials" name="initials" value=""><br>
+            <button id="highscore-init">Submit</button>
+        </div>
 
         <div class="highscores">
             <div class="highscore-title row">
                 <h3 class="col-md-8-center">Highscores</h3>
             </div>
             <div class="scores-list row">
-                <ol>
-                    <li>1. test me i am a score</li>
+                <ol id="initial-input">
                     <!--dynamic scores will go here!-->
                 </ol>
             </div>
             <div class="buttons row">
                 <div class="col-lg-3">
-                    <button>Clear Highscores</button>
+                    <button id="clear-score">Clear Highscores</button>
                 </div>
                 <div class="col-lg-3">
                     <button id="back-button">Go Back</button>

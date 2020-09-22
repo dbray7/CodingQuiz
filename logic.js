@@ -4,14 +4,24 @@ $(document).ready(function () {
     var highScores = $(".highscores");
     var quizBody = $(".quiz-body");
     var quizStart = $(".start-quiz");
+    var enterHighscores = $(".enter-highscores");
     var timerText = document.getElementById('timer');
     var score = 0;
+    var highScoresStorage = JSON.parse(sessionStorage.getItem("highscores")) || [];
+
+    if (highScoresStorage.length > 1) {
+        highScoresStorage.forEach(score => {
+            createScores(score);
+        })
+    }
+
     resetTimer();
 
     $(document).ready(function () {
         quizStart.show();
         highScores.hide();
         quizBody.hide();
+        enterHighscores.hide();
     });
 
     $("#start-button").on("click", function () {
@@ -30,8 +40,10 @@ $(document).ready(function () {
             var m = timeArray[0];
             var s = checkSecond((timeArray[1] - 1));
             if (s == 59) { m = 0 }
-            if (m === 0 && s <= 00) {
+            if (m == "0" && s == "00") {
                 runTimer = false;
+                alert("Time is up!");
+                highScoreInput();
             }
             timerText.innerHTML = m + ":" + s;
             setTimeout(startTimer, 1000);
@@ -63,6 +75,7 @@ $(document).ready(function () {
     }
 
     function startQuiz() {
+        runTimer = true;
         quizStart.hide();
         quizBody.show();
         startTimer(runTimer);
@@ -91,6 +104,9 @@ $(document).ready(function () {
                     } else {
                         alert("Wrong Answer :(");
                         removeTime();
+                        if (runTimer === false) {
+                            highScoreInput();
+                        }
                     }
                     $('#choices').empty();
                     currentQuestionIndex++;
@@ -103,22 +119,66 @@ $(document).ready(function () {
             }
         }
         else {
+            runTimer = false;
+            resetTimer();
+            resetQuiz();
             quizBody.hide();
-            highScores.show();
+            highScoreInput();
         }
     }
+
+    function resetQuiz() {
+        $('#choices').empty();
+        $("#question-title").text(null);
+        currentQuestionIndex = 0;
+    }
+
+    function highScoreInput() {
+        resetQuiz();
+        resetTimer();
+        quizBody.hide();
+        enterHighscores.show();
+    }
+
     $("#back-button").on("click", function () {
         highScores.hide();
+        enterHighscores.hide();
         quizStart.show();
     });
 
     $("#view-scores").on("click", function () {
+        resetQuiz();
         quizBody.hide();
         quizStart.hide();
+        enterHighscores.hide();
+        highScores.show();
+        runTimer = false;
+        resetTimer();
+    });
+
+    $("#highscore-init").on("click", function () {
+        var userInitials = document.getElementById("initials").value;
+        var highscorePlusInitials = userInitials + "-" + score;
+        createScores(highscorePlusInitials);
+        highScoresStorage.push(highscorePlusInitials);
+        sessionStorage.setItem("highscores", JSON.stringify(highScoresStorage));
+
+        enterHighscores.hide();
         highScores.show();
     });
 
+    $("#clear-score").on("click", function () {
+        sessionStorage.setItem("highscores", JSON.stringify([]));
+        $("#initial-input").empty();
+    })
 
+    function createScores(highscorePlusInitials) {
+        var initialInput = $("#initial-input");
+        var newInitials = document.createElement("li");
+        newInitials.setAttribute("class", "score");
+        newInitials.innerHTML = highscorePlusInitials;
+        initialInput.append(newInitials);
+    }
 });
 
 var questions = [
