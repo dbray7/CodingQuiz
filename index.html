@@ -14,40 +14,58 @@
 </head>
 
 <body>
-    <div class="container-fluid">
+    <div class="container">
         <div class="banner">
             <div class="row">
-                <button id="view-scores"> View Highscores</button>
-                <div>Time: <span id="timer"></span> </div>
+                <div class="col text-left"><button id="view-scores"> View Highscores</button></div>
+                <div class="col text-right">Time: <span id="timer"></span> </div>
             </div>
         </div>
 
-        <div class="start-quiz row">
-            <h2>Coding Quiz</h2>
-            <button id="start-button">Start!</button>
+        <div class="start-quiz">
+            <div class="row justify-content-center">
+                <h2 class="col-lg-12-center">Coding Quiz</h2>
+            </div>
+            <div class="row justify-content-center">
+                <p class="col-lg-12-center">This is a short JavaScript multiple choice quiz to test your skills! <br>
+                    It is a 90 second timed quiz, if you answer a question incorrectly 20 seconds will be deducted from
+                    the timer. Good luck!</p>
+            </div>
+            <div class="row justify-content-center">
+                <button class="col-lg-12-center" id="start-button">Start!</button>
+            </div>
         </div>
 
-        <div class="quiz-body row">
-            <h3 id="question-title"></h3>
+        <div class="quiz-body">
+            <div class="row justify-content-center">
+                <h3 id="question-title"></h3>
+            </div>
             <div id="choices">
             </div>
         </div>
         <div class="enter-highscores">
-            <label for="initials">Initials:</label><br>
-            <input type="text" id="initials" name="initials" value=""><br>
-            <button id="highscore-init">Submit</button>
+            <div class="col-sm-4 col-sm-offset-4">
+                <div class="input-group input-group-sm mb-3 initial-header">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Initials</span>
+                    </div>
+                    <input type="text" class="form-control" id="initials" value="" aria-label="Small"
+                        aria-describedby="inputGroup-sizing-sm" placeholder="Enter you initials">
+                </div>
+                <button id="highscore-init">Submit</button>
+            </div>
         </div>
 
         <div class="highscores">
-            <div class="highscore-title row">
+            <div class="highscore-title row justify-content-center">
                 <h3 class="col-md-8-center">Highscores</h3>
             </div>
-            <div class="scores-list row">
+            <div class="scores-list row justify-content-center">
                 <ol id="initial-input">
                     <!--dynamic scores will go here!-->
                 </ol>
             </div>
-            <div class="buttons row">
+            <div class="buttons row justify-content-center">
                 <div class="col-lg-3">
                     <button id="clear-score">Clear Highscores</button>
                 </div>

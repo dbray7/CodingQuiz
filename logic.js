@@ -94,7 +94,9 @@ $(document).ready(function () {
             $("#question-title").text(currentQuestion.question);
 
             for (var i = 0; i < currentChoices.length; i++) {
+                var choiceSelectionDiv = document.createElement("div");
                 var choiceSelection = document.createElement("button");
+                choiceSelectionDiv.setAttribute("class", "row justify-content-center")
                 choiceSelection.setAttribute("class", "choice");
                 choiceSelection.setAttribute("value", currentChoices[i]);
                 choiceSelection.addEventListener("click", function () {
@@ -115,7 +117,8 @@ $(document).ready(function () {
 
                 choiceSelection.textContent = i + 1 + ". " + currentChoices[i];
 
-                $("#choices").append(choiceSelection);
+                choiceSelectionDiv.append(choiceSelection);
+                $("#choices").append(choiceSelectionDiv);
             }
         }
         else {

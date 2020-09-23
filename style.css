@@ -14,5 +14,18 @@ h2{
     font-size: x-large;
     color: teal;
     font-size: x-large;
+
     
+}
+
+.banner{
+    margin-top: 20px;
+}
+
+.initial-header{
+    margin-top: 30px;
+}
+
+p{
+    text-align: center;
 }
